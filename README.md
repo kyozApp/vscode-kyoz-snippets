@@ -1,8 +1,10 @@
 <div align="center">
-  <img src="./images/logo.png" width="128" alt="Kyoz Snippets Logo">
+  <img src="https://raw.githubusercontent.com/kyozApp/vscode-kyoz-snippets/main/images/logo.png" width="128" alt="Kyoz Snippets Logo">
 
-  # Kyoz Snippets Extension 🚀
-  <p>Colección de snippets personales optimizados para el desarrollo moderno con <b>Hono</b>, <b>Svelte</b> y <b>Astro</b>.</p>
+# Kyoz Snippets Extension 🚀
+
+  <p><b>Aumenta tu productividad con plantillas premium para el desarrollo moderno.</b></p>
+  <p>Optimizado para arquitecturas AduShared/AduFlow utilizando Hono, Svelte 5 y Astro.</p>
 
 [![Version](https://img.shields.io/badge/version-0.0.3-blue.svg)](package.json)
 [![VS Code](https://img.shields.io/badge/platform-VS_Code-blueviolet.svg)](https://code.visualstudio.com/)
@@ -12,67 +14,60 @@
 
 ---
 
-## 📋 Tabla de Contenidos
+## ✨ Características Principales
 
-1. [Características](#-características)
-2. [Snippets Incluidos](#-snippets-incluidos)
-3. [Instalación](#-instalación)
-4. [Uso](#-uso)
-5. [Flujo de Desarrollo (Dev)](#-flujo-de-desarrollo-dev)
-6. [Flujo de Producción (Prod)](#-flujo-de-producción-prod)
-7. [Licencia](#-licencia)
+- 💎 **Premium JSDoc**: Documentación profesional con iconos integrada en cada snippet.
+- ⚡ **Svelte 5 Ready**: Plantillas actualizadas con soporte para **Runes** y Superforms.
+- 🛠️ **Arquitectura Robusta**: Estructura de servidores Hono con Graceful Shutdown y validación Zod.
+- 🛡️ **Tipado Estricto**: Diseñado al 100% para TypeScript.
 
 ---
 
-## ✨ Características
+## 📚 Catálogo de Snippets
 
-- **Tipado Estricto**: Snippets diseñados para TypeScript.
-- **Productividad**: Estructuras base para rutas, componentes y páginas.
-- **Ligero**: Sin dependencias innecesarias.
+### 🌍 General (Transversal)
+
+| Prefijo          | Descripción                                              |
+| :--------------- | :------------------------------------------------------- |
+| `general-header` | Encabezado de archivo profesional con nombre automático. |
+| `general-fn`     | Función universal (Sync/Async) con menú de selección.    |
+
+### ⚡ Hono (Backend)
+
+| Prefijo      | Descripción                                                     |
+| :----------- | :-------------------------------------------------------------- |
+| `hono-index` | Bootstrap completo con Graceful Shutdown y Healthcheck.         |
+| `hono-env`   | Configuración de entorno validada con Zod (AduShared Style).    |
+| `hono-crud`  | CRUD completo (GET, POST, PATCH, DELETE) con respuesta premium. |
+| `hono-get`   | Endpoint individual GET con respuesta estandarizada.            |
+| `hono-post`  | Endpoint individual POST con respuesta estandarizada.           |
+| `hono-zod`   | Validador de rutas integrado con respuesta estandarizada.       |
+
+### 🚀 Svelte & SvelteKit
+
+| Prefijo                | Descripción                                                    |
+| :--------------------- | :------------------------------------------------------------- |
+| `svelte-page`          | Página estándar con Runes (`$props()`).                        |
+| `svelte-page-form`     | Formulario avanzado con Superforms y estados de carga.         |
+| `svelte-server-page`   | Lógica de servidor (`load` y `actions`) con tipado automático. |
+| `svelte-server-layout` | Lógica de servidor para layouts.                               |
+| `svelte-api`           | Endpoints de API para archivos `+server.ts`.                   |
 
 ---
 
-## 📦 Tecnologías Soportadas
-
-Esta extensión proporciona una colección creciente de snippets para:
-
-- **Hono**: Plantillas para routers, middlewares y respuestas JSON.
-- **Svelte**: Estructuras de componentes, stores y hooks.
-- **Astro**: Páginas base, layouts y componentes con props.
-
-> [!TIP]
-> Para ver todos los snippets disponibles, simplemente empieza a escribir en un archivo compatible (`.ts`, `.svelte`, `.astro`) y VS Code te sugerirá las opciones automáticas de **Kyoz Snippets**.
-
----
-
-## 🛠️ Instalación
+## 🚀 Instalación
 
 1. Abre **VS Code**.
-2. Ve a la vista de **Extensiones** (`Ctrl+Shift+X`).
+2. Ve a la pestaña de **Extensiones** (`Ctrl+Shift+X`).
 3. Busca `Kyoz Snippets`.
 4. Haz clic en **Instalar**.
 
----
+## 🛠️ Uso
 
-## 💡 Uso
-
-Simplemente abre un archivo con una de las extensiones soportadas y empieza a escribir los prefijos:
-
-| Tecnología | Prefijo             | Resultado |
-| ---------- | ------------------- | --------- |
-| **Hono**   | `honojs-router`     | Crea un router básico con GET y POST. |
-| **Svelte** | `svelte-component`  | Genera la estructura de un componente Svelte con TS. |
-| **Astro**  | `astro-page`        | Estructura básica de una página Astro con Props. |
+Simplemente abre un archivo soportado (`.ts`, `.js`, `.svelte`, `.astro`) y comienza a escribir los prefijos listados arriba. Presiona `Tab` o `Enter` para expandir el snippet.
 
 ---
 
-## 🛠️ Contribución y Desarrollo
-
-¿Quieres añadir tus propios snippets o mejorar la extensión? Revisa nuestra [Guía de Desarrollo](DEVELOPMENT.md).
-
-
----
-
-## 📄 Licencia
-
-Este proyecto se distribuye bajo la **Licencia MIT**. Consulte el archivo [LICENSE](LICENSE) para obtener más información.
+<div align="center">
+  <p>Desarrollado con ❤️ por <b>kyozApp</b></p>
+</div>
