@@ -69,5 +69,5 @@ Simplemente abre un archivo soportado (`.ts`, `.js`, `.svelte`, `.astro`) y comi
 ---
 
 <div align="center">
-  <p>Desarrollado con ❤️ por <b>kyozApp</b></p>
+  <p>Desarrollado con ❤️ por <b>Kyoz</b></p>
 </div>

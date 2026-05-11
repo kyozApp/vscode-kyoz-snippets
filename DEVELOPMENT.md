@@ -1,65 +1,86 @@
 # Guía de Desarrollo - Kyoz Snippets 🛠️
 
-Este documento describe cómo configurar el entorno de desarrollo, empaquetar y publicar la extensión.
+Este documento describe el proceso de creación, configuración y publicación de la extensión.
 
 ---
 
-## 💻 Flujo de Desarrollo (Dev)
+## 🏗️ 1. Proceso de Creación (Desde Cero)
 
-### 1. Clonar el repositorio
+Pasos seguidos para inicializar este proyecto:
+
+1. **Crear Carpeta del Proyecto**:
+
+   ```bash
+   mkdir vscode-kyoz-snippets
+   cd vscode-kyoz-snippets
+   ```
+
+2. **Inicializar Node Project**:
+
+   ```bash
+   npm init -y
+   ```
+
+3. **Estructura de Directorios**:
+   - Crear carpeta `snippets/` para los archivos JSON.
+   - Crear carpeta `images/` para el logo.
+
+4. **Configurar `package.json`**:
+   - Registrar cada archivo JSON en `contributes.snippets`.
+   - Añadir metadatos (publisher, icon, repository, etc.).
+
+---
+
+## 💻 2. Flujo de Trabajo Local
+
+### Clonar y Configurar
 
 ```bash
-git clone https://github.com/kyozApp/kyoz-snippets.git
-cd kyoz-snippets
+git clone https://github.com/kyozApp/vscode-kyoz-snippets.git
+cd vscode-kyoz-snippets
+npm i
 ```
 
-### 2. Instalación de dependencias
-
-```bash
-npm install
-```
-
-### 3. Empaquetado Local
-
-Genera el archivo `.vsix` para pruebas:
+### Empaquetado para Pruebas
 
 ```bash
 npx @vscode/vsce package
 ```
 
-### 4. Instalación del `.vsix`
-
-Para probar la extensión localmente:
+### Instalación Manual
 
 1. Ve a la vista de **Extensiones** (`Ctrl+Shift+X`).
-2. Haz clic en el menú de los tres puntos (`...`) en la parte superior.
-3. Selecciona **Install from VSIX...**.
-4. Elige el archivo `kyoz-snippets-x.x.x.vsix` generado.
+2. Menú de tres puntos (`...`) -> **Install from VSIX...**.
+3. Selecciona el archivo `.vsix` generado.
 
 ---
 
-## 🚀 Flujo de Producción (Prod)
+## 🚀 3. Flujo de Producción (Prod)
 
 ### 1. Crear un Token de Acceso (PAT)
 
 1. Ve a [Azure DevOps](https://dev.azure.com/).
-2. En **Personal Access Tokens**, crea uno nuevo con el scope `Marketplace (Publish)`.
+2. En **Personal Access Tokens**, crea uno nuevo.
+3. Asegúrate de que tenga el scope `Marketplace (Publish)`.
 
 ### 2. Iniciar Sesión
 
+Utiliza tu ID de publisher:
+
 ```bash
 npx @vscode/vsce login kyoz
-# Pega tu PAT cuando se te solicite
 ```
 
-### 3. Publicar la Extensión
+### 3. Publicar/Actualizar Versión
 
-```bash
-npx @vscode/vsce publish
-```
-
-### 4. Incrementar Versión
+Para publicar una nueva versión (ej. un parche):
 
 ```bash
 npx @vscode/vsce publish patch
 ```
+
+---
+
+<div align="center">
+  <p>Mantén este documento actualizado con cualquier cambio en el flujo de construcción.</p>
+</div>

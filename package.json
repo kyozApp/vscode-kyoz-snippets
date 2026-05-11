@@ -13,11 +13,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/kyozApp/kyoz-snippets.git"
+    "url": "https://github.com/kyozApp/vscode-kyoz-snippets.git"
   },
-  "homepage": "https://github.com/kyozApp/kyoz-snippets#readme",
+  "homepage": "https://github.com/kyozApp/vscode-kyoz-snippets#readme",
   "bugs": {
-    "url": "https://github.com/kyozApp/kyoz-snippets/issues"
+    "url": "https://github.com/kyozApp/vscode-kyoz-snippets/issues"
   },
   "license": "MIT",
   "keywords": [
