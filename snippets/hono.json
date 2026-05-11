@@ -1,0 +1,82 @@
+{
+  "Hono Router básico": {
+    "prefix": "honojs-router",
+    "body": [
+      "import { Hono } from 'hono';",
+      "",
+      "const router = new Hono();",
+      "",
+      "router.get('/', (c) => {",
+      "  return c.json({ message: 'Hello, ${1:world}!' });",
+      "});",
+      "",
+      "router.post('/${2:create}', async (c) => {",
+      "  const body = await c.req.json();",
+      "  return c.json({ data: body }, 201);",
+      "});",
+      "",
+      "export default router;",
+      "$0"
+    ],
+    "description": "Plantilla de router Hono con GET y POST"
+  },
+  "Hono Middleware": {
+    "prefix": "hono-middleware",
+    "body": [
+      "import { createMiddleware } from 'hono/factory';",
+      "",
+      "export const ${1:myMiddleware} = createMiddleware(async (c, next) => {",
+      "  ${2:// Lógica antes}",
+      "  await next();",
+      "  ${3:// Lógica después}",
+      "});"
+    ],
+    "description": "Crea un middleware base para Hono"
+  },
+  "Hono + Zod Validator": {
+    "prefix": "hono-zod",
+    "body": [
+      "import { z } from 'zod';",
+      "import { zValidator } from '@hono/zod-validator';",
+      "",
+      "const ${1:schema} = z.object({",
+      "  ${2:name}: z.string(),",
+      "});",
+      "",
+      "app.${3:post}('/${4:route}', zValidator('${5:json}', ${1:schema}), (c) => {",
+      "  const data = c.req.valid('${5:json}');",
+      "  return c.json({ success: true, data });",
+      "});"
+    ],
+    "description": "Validador de Zod para rutas Hono"
+  },
+  "Hono + Drizzle Setup": {
+    "prefix": "hono-drizzle",
+    "body": [
+      "import { drizzle } from 'drizzle-orm/${1:libsql}';",
+      "import { ${2:client} } from '${3:./db}';",
+      "",
+      "const db = drizzle(${2:client});",
+      "",
+      "app.get('/${4:users}', async (c) => {",
+      "  const result = await db.select().from(${5:table}).all();",
+      "  return c.json(result);",
+      "});"
+    ],
+    "description": "Configuración básica de Drizzle con Hono"
+  },
+  "Hono + Prisma Client": {
+    "prefix": "hono-prisma",
+    "body": [
+      "import { PrismaClient } from '@prisma/client';",
+      "",
+      "const prisma = new PrismaClient();",
+      "",
+      "app.get('/${1:data}', async (c) => {",
+      "  const ${2:items} = await prisma.${3:model}.findMany();",
+      "  return c.json(${2:items});",
+      "});"
+    ],
+    "description": "Inicialización y uso de Prisma Client en Hono"
+  }
+}

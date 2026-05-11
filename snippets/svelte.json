@@ -1,0 +1,14 @@
+{
+  "Componente Svelte con script": {
+    "prefix": "svelte-component",
+    "body": [
+      "<script lang=\"ts\">",
+      "  let name = '${1:world}';",
+      "</script>",
+      "",
+      "<h1>Hello {name}!</h1>",
+      "$0"
+    ],
+    "description": "Componente Svelte básico con TypeScript"
+  }
+}

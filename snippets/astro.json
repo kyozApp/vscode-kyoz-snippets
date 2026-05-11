@@ -1,0 +1,26 @@
+{
+  "Página Astro con props": {
+    "prefix": "astro-page",
+    "body": [
+      "---",
+      "export interface Props {",
+      "  title: string;",
+      "}",
+      "",
+      "const { title } = Astro.props;",
+      "---",
+      "",
+      "<html lang=\"es\">",
+      "  <head>",
+      "    <meta charset=\"utf-8\" />",
+      "    <title>{title}</title>",
+      "  </head>",
+      "  <body>",
+      "    <h1>{title}</h1>",
+      "    <slot />$0",
+      "  </body>",
+      "</html>"
+    ],
+    "description": "Plantilla de página Astro con TypeScript"
+  }
+}

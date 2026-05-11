@@ -1,0 +1,58 @@
+{
+  "name": "vscode-kyoz-snippets",
+  "displayName": "Kyoz Snippets Extension (Hono, Svelte, Astro)",
+  "description": "Plantillas personales para routers Hono, componentes Svelte y páginas Astro",
+  "version": "0.0.1",
+  "publisher": "kyoz",
+  "icon": "images/logo.png",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kyozApp/kyoz-snippets.git"
+  },
+  "homepage": "https://github.com/kyozApp/kyoz-snippets#readme",
+  "bugs": {
+    "url": "https://github.com/kyozApp/kyoz-snippets/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "hono",
+    "svelte",
+    "astro",
+    "snippets",
+    "typescript"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "typescript",
+        "path": "./snippets/hono.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/hono.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/hono.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/hono.json"
+      },
+      {
+        "language": "svelte",
+        "path": "./snippets/svelte.json"
+      },
+      {
+        "language": "astro",
+        "path": "./snippets/astro.json"
+      }
+    ]
+  }
+}
