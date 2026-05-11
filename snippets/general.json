@@ -1,0 +1,36 @@
+{
+  "General: File Header": {
+    "prefix": "general-header",
+    "body": [
+      "/**",
+      " * ============================================================================",
+      " * 📁 **File: ${1:${TM_FILENAME}}**",
+      " * ============================================================================",
+      " *",
+      " * @description ${2:Describe el propósito general de este archivo...}",
+      " * @module ${3:Module Path}",
+      " * @version 1.0.0",
+      " * ============================================================================",
+      " */",
+      "$0"
+    ],
+    "description": "Encabezado de archivo profesional con nombre automático"
+  },
+
+  "General: Premium Function": {
+    "prefix": "general-fn",
+    "body": [
+      "/**",
+      " * ${1|⚙️ Helper,⚡ Async,🛠️ Middleware,🧬 Logic|}: **${2:functionName}**",
+      " *",
+      " * @description ${3:Escribe aquí qué hace la función...}",
+      " * @param ${4:params} - ${5:Descripción}",
+      " * @returns ${6:void}",
+      " */",
+      "${7|export , |}const ${2:functionName} = ${8| ,async |}(${4:params}) => {",
+      "  $0",
+      "};"
+    ],
+    "description": "Función universal (Sync/Async) con JSDoc y exportación opcional"
+  }
+}

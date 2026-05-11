@@ -1,14 +1,134 @@
 {
-  "Componente Svelte con script": {
-    "prefix": "svelte-component",
+  "SvelteKit: +page.svelte (Runes)": {
+    "prefix": "svelte-page",
     "body": [
       "<script lang=\"ts\">",
-      "  let name = '${1:world}';",
+      "  let { data } = \\$props();",
       "</script>",
       "",
-      "<h1>Hello {name}!</h1>",
-      "$0"
+      "<svelte:head>",
+      "  <title>${1:Título} | AduShared</title>",
+      "</svelte:head>",
+      "",
+      "<main>",
+      "  <h1>${1:Título}</h1>",
+      "  $0",
+      "</main>",
+      "",
+      "<style>",
+      "</style>"
     ],
-    "description": "Componente Svelte básico con TypeScript"
+    "description": "Template de Svelte 5 con Runes para archivos +page.svelte"
+  },
+
+  "SvelteKit: +page.svelte (Superform)": {
+    "prefix": "svelte-page-form",
+    "body": [
+      "<script lang=\"ts\">",
+      "  import { superForm } from 'sveltekit-superforms';",
+      "",
+      "  let { data } = \\$props();",
+      "",
+      "  const { form, errors, enhance, delayed } = superForm(data.form);",
+      "</script>",
+      "",
+      "<svelte:head>",
+      "  <title>${1:Form Page} | AduShared</title>",
+      "</svelte:head>",
+      "",
+      "<div>",
+      "  <header>",
+      "    <h1>${1:Form Page}</h1>",
+      "  </header>",
+      "",
+      "  <form method=\"POST\" use:enhance>",
+      "    $0",
+      "    <button type=\"submit\" disabled={\\$delayed}>",
+      "      {#if \\$delayed}Cargando...{:else}Guardar{/if}",
+      "    </button>",
+      "  </form>",
+      "</div>",
+      "",
+      "<style>",
+      "</style>"
+    ],
+    "description": "Template de Svelte 5 con Superform integrado"
+  },
+
+  "SvelteKit: +layout.svelte": {
+    "prefix": "svelte-layout",
+    "body": [
+      "<script lang=\"ts\">",
+      "  let { children } = \\$props();",
+      "</script>",
+      "",
+      "<div>",
+      "  {@render children()}",
+      "</div>",
+      "",
+      "<style>",
+      "</style>"
+    ],
+    "description": "Template de Svelte 5 para archivos +layout.svelte"
+  },
+
+  "SvelteKit: +page.server.ts": {
+    "prefix": "svelte-server-page",
+    "body": [
+      "import type { PageServerLoad, Actions } from './\\$types';",
+      "",
+      "export const load: PageServerLoad = async ({ locals }) => {",
+      "  return {",
+      "    $0",
+      "  };",
+      "};",
+      "",
+      "export const actions: Actions = {",
+      "  default: async ({ request, locals }) => {",
+      "    return {};",
+      "  }",
+      "};"
+    ],
+    "description": "Lógica de servidor para +page.server.ts (Load y Actions)"
+  },
+
+  "SvelteKit: +layout.server.ts": {
+    "prefix": "svelte-server-layout",
+    "body": [
+      "import type { LayoutServerLoad } from './\\$types';",
+      "",
+      "export const load: LayoutServerLoad = async ({ locals }) => {",
+      "  return {",
+      "    $0",
+      "  };",
+      "};"
+    ],
+    "description": "Lógica de servidor para +layout.server.ts"
+  },
+
+  "SvelteKit: +server.ts (API Endpoints)": {
+    "prefix": "svelte-api",
+    "body": [
+      "import { json } from '@sveltejs/kit';",
+      "import type { RequestHandler } from './\\$types';",
+      "",
+      "export const GET: RequestHandler = async ({ url }) => {",
+      "  return json({",
+      "    success: true,",
+      "    message: 'Data fetched successfully',",
+      "    data: []",
+      "  });",
+      "};",
+      "",
+      "export const POST: RequestHandler = async ({ request }) => {",
+      "  const body = await request.json();",
+      "  return json({",
+      "    success: true,",
+      "    message: 'Created successfully',",
+      "    data: body",
+      "  }, { status: 201 });",
+      "};"
+    ],
+    "description": "Endpoints de API para archivos +server.ts"
   }
 }

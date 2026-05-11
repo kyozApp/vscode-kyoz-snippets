@@ -31,6 +31,30 @@
     "snippets": [
       {
         "language": "typescript",
+        "path": "./snippets/general.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/general.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/general.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/general.json"
+      },
+      {
+        "language": "svelte",
+        "path": "./snippets/general.json"
+      },
+      {
+        "language": "astro",
+        "path": "./snippets/general.json"
+      },
+      {
+        "language": "typescript",
         "path": "./snippets/hono.json"
       },
       {
@@ -47,6 +71,10 @@
       },
       {
         "language": "svelte",
+        "path": "./snippets/svelte.json"
+      },
+      {
+        "language": "typescript",
         "path": "./snippets/svelte.json"
       },
       {
