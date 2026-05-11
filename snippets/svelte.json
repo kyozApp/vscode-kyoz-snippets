@@ -4,6 +4,9 @@
     "body": [
       "<script lang=\"ts\">",
       "  let { data } = \\$props();",
+      "  \\$effect(() => {",
+      "    console.log(data);",
+      "  });",
       "</script>",
       "",
       "<svelte:head>",
@@ -78,6 +81,7 @@
       "import type { PageServerLoad, Actions } from './\\$types';",
       "",
       "export const load: PageServerLoad = async ({ locals }) => {",
+      "  console.log(locals);",
       "  return {",
       "    $0",
       "  };",
@@ -85,6 +89,8 @@
       "",
       "export const actions: Actions = {",
       "  default: async ({ request, locals }) => {",
+      "    console.log(request);",
+      "    console.log(locals);",
       "    return {};",
       "  }",
       "};"
