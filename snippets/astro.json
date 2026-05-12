@@ -3,6 +3,13 @@
     "prefix": "astro-page",
     "body": [
       "---",
+      "/**",
+      " * 📁 **File**: ${TM_FILENAME}",
+      " * @description ${1:Página de Astro.}",
+      " * @module pages",
+      " * @version 1.0.0",
+      " */",
+      "",
       "export interface Props {",
       "  title: string;",
       "}",

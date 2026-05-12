@@ -29,33 +29,20 @@ export function activate(context: vscode.ExtensionContext) {
 
             try {
                 const mainBody = await readSnippetBody(snippetFile, snippetKey);
-                const headerBody = await readSnippetBody('general.json', 'General: File Header');
-                
-                let headerText = headerBody.join('\n');
                 let mainText = mainBody.join('\n');
 
-                // 1. Limpiar nombre de variable para Hono (ej: router.ts -> router)
+                // 1. Limpiar nombre de variable base para consistencia
                 const baseName = defaultFilename.split('.')[0];
                 mainText = mainText.replace(/\$\{1:router\}/g, `\${1:${baseName}}`);
+                mainText = mainText.replace(/\$\{1:functionName\}/g, `\${1:${baseName}}`);
 
-                // 2. Ajustar estilo de comentario según el lenguaje
-                if (defaultFilename.endsWith('.svelte') || defaultFilename.endsWith('.astro')) {
-                    // Convertir /** */ a <!-- --> para Svelte/Astro (fuera de scripts)
-                    headerText = headerText.replace(/\/\*\*/g, '<!--').replace(/\*\//g, '-->').replace(/ \*/g, '  ');
-                    headerText = `${headerText}\n`;
-                } else {
-                    headerText = `${headerText}\n\n`;
-                }
-
-                const finalContent = headerText + mainText;
-                
                 const fileUri = vscode.Uri.joinPath(uri, defaultFilename);
                 await vscode.workspace.fs.writeFile(fileUri, new Uint8Array());
                 
                 const doc = await vscode.workspace.openTextDocument(fileUri);
                 const editor = await vscode.window.showTextDocument(doc);
                 
-                await editor.insertSnippet(new vscode.SnippetString(finalContent));
+                await editor.insertSnippet(new vscode.SnippetString(mainText));
             } catch (error) {
                 vscode.window.showErrorMessage(`Error creando archivo: ${error}`);
             }

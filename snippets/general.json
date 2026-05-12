@@ -3,14 +3,10 @@
     "prefix": "general-header",
     "body": [
       "/**",
-      " * ============================================================================",
-      " * 📁 **File: ${1:${TM_FILENAME}}**",
-      " * ============================================================================",
-      " *",
-      " * @description ${2:Describe el propósito general de este archivo...}",
-      " * @module ${3:Module Path}",
+      " * 📁 **File**: ${1:${TM_FILENAME}}",
+      " * @description ${2:Describe el propósito del archivo...}",
+      " * @module ${3:Module}",
       " * @version 1.0.0",
-      " * ============================================================================",
       " */",
       "$0"
     ],
