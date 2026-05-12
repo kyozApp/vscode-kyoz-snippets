@@ -1,86 +1,88 @@
-# Guía de Desarrollo - Kyoz Snippets 🛠️
+# Guía de Desarrollo - Kyoz Snippets 🛠️ (v0.1.0)
 
-Este documento describe el proceso de creación, configuración y publicación de la extensión.
+Este documento detalla el ciclo de vida completo de la extensión, desde su creación inicial hasta la publicación en el Marketplace.
 
 ---
 
 ## 🏗️ 1. Proceso de Creación (Desde Cero)
 
-Pasos seguidos para inicializar este proyecto:
+Si necesitas recrear este proyecto desde una carpeta vacía, estos son los pasos:
 
-1. **Crear Carpeta del Proyecto**:
-
+1. **Inicializar Proyecto Node**:
    ```bash
-   mkdir vscode-kyoz-snippets
-   cd vscode-kyoz-snippets
+   mkdir vscode-kyoz-snippets && cd vscode-kyoz-snippets
+   pnpm init
    ```
 
-2. **Inicializar Node Project**:
-
+2. **Instalar Dependencias de Desarrollo**:
    ```bash
-   npm init -y
+   pnpm add -D typescript @types/vscode@1.107.0 @types/node esbuild @vscode/vsce
    ```
 
-3. **Estructura de Directorios**:
-   - Crear carpeta `snippets/` para los archivos JSON.
-   - Crear carpeta `images/` para el logo.
+3. **Inicializar TypeScript**:
+   ```bash
+   pnpm dlx tsc --init
+   ```
+   *(Luego configurar el `tsconfig.json` con `rootDir: "src"` y `outDir: "out"`)*.
 
-4. **Configurar `package.json`**:
-   - Registrar cada archivo JSON en `contributes.snippets`.
-   - Añadir metadatos (publisher, icon, repository, etc.).
+4. **Estructura de Carpetas**:
+   ```bash
+   mkdir src snippets images
+   ```
+
+5. **Configurar Menús en `package.json`**:
+   Registrar los `contributes.submenus` y `contributes.commands` para habilitar el clic derecho.
 
 ---
 
-## 💻 2. Flujo de Trabajo Local
+## 💻 2. Flujo de Trabajo Local (Desarrollo)
 
-### Clonar y Configurar
+Para probar cambios de forma rápida en tu propia máquina:
 
-```bash
-git clone https://github.com/kyozApp/vscode-kyoz-snippets.git
-cd vscode-kyoz-snippets
-npm i
-```
-
-### Empaquetado para Pruebas
-
-```bash
-npx @vscode/vsce package
-```
-
-### Instalación Manual
-
-1. Ve a la vista de **Extensiones** (`Ctrl+Shift+X`).
-2. Menú de tres puntos (`...`) -> **Install from VSIX...**.
-3. Selecciona el archivo `.vsix` generado.
+1. **Instalar dependencias**: `pnpm install`.
+2. **Lanzar Compilador (Watch)**: Ejecuta `pnpm watch`. Esto vigila tus cambios en `src/extension.ts` y los traduce a `out/extension.js` al instante.
+3. **Lanzar ventana de prueba**: Presiona `F5` en VS Code. Se abrirá una ventana limpia donde podrás probar el menú contextual.
 
 ---
 
-## 🚀 3. Flujo de Producción (Prod)
+## 📦 3. Empaquetado y Producción (VSIX)
 
-### 1. Crear un Token de Acceso (PAT)
+> [!IMPORTANT]
+> **ORDEN CRÍTICO**: Nunca ejecutes el empaquetado sin haber compilado primero. Si lo haces, el archivo `.vsix` irá vacío o con código antiguo.
 
-1. Ve a [Azure DevOps](https://dev.azure.com/).
-2. En **Personal Access Tokens**, crea uno nuevo.
-3. Asegúrate de que tenga el scope `Marketplace (Publish)`.
-
-### 2. Iniciar Sesión
-
-Utiliza tu ID de publisher:
-
+### Paso A: Preparar para Producción
 ```bash
-npx @vscode/vsce login kyoz
+pnpm build
 ```
+*Esto genera una versión minificada y optimizada de tu código en la carpeta `out/`.*
 
-### 3. Publicar/Actualizar Versión
-
-Para publicar una nueva versión (ej. un parche):
-
+### Paso B: Generar el archivo .vsix
 ```bash
-npx @vscode/vsce publish patch
+pnpm package
+```
+*Este comando usa la herramienta oficial `@vscode/vsce` instalada localmente.*
+
+---
+
+## 🚀 4. Publicación en el Marketplace (Prod)
+
+### 1. Gestión de Identidad
+1. Obtén tu **PAT (Personal Access Token)** en [Azure DevOps](https://dev.azure.com/).
+2. Scope requerido: `Marketplace (Publish)`.
+3. Inicia sesión en tu terminal:
+   ```bash
+   pnpm exec vsce login kyoz
+   ```
+
+### 2. Publicar Nueva Versión
+Cada vez que hagas un cambio importante, incrementa la versión y publica:
+```bash
+# Sube la versión y publica de un solo golpe
+pnpm publish patch
 ```
 
 ---
 
 <div align="center">
-  <p>Mantén este documento actualizado con cualquier cambio en el flujo de construcción.</p>
+  <p>Mantén este documento actualizado. Última actualización: 12/05/2026</p>
 </div>

@@ -1,6 +1,6 @@
 {
   "SvelteKit: +page.svelte (Runes)": {
-    "prefix": "svelte-page",
+    "prefix": "sveltekit-page",
     "body": [
       "<script lang=\"ts\">",
       "  let { data } = \\$props();",
@@ -25,7 +25,7 @@
   },
 
   "SvelteKit: +page.svelte (Superform)": {
-    "prefix": "svelte-page-form",
+    "prefix": "sveltekit-page-form",
     "body": [
       "<script lang=\"ts\">",
       "  import { superForm } from 'sveltekit-superforms';",
@@ -59,7 +59,7 @@
   },
 
   "SvelteKit: +layout.svelte": {
-    "prefix": "svelte-layout",
+    "prefix": "sveltekit-layout",
     "body": [
       "<script lang=\"ts\">",
       "  let { children } = \\$props();",
@@ -76,7 +76,7 @@
   },
 
   "SvelteKit: +page.server.ts": {
-    "prefix": "svelte-server-page",
+    "prefix": "sveltekit-server-page",
     "body": [
       "import type { PageServerLoad, Actions } from './\\$types';",
       "",
@@ -99,7 +99,7 @@
   },
 
   "SvelteKit: +layout.server.ts": {
-    "prefix": "svelte-server-layout",
+    "prefix": "sveltekit-server-layout",
     "body": [
       "import type { LayoutServerLoad } from './\\$types';",
       "",
@@ -113,7 +113,7 @@
   },
 
   "SvelteKit: +server.ts (API Endpoints)": {
-    "prefix": "svelte-api",
+    "prefix": "sveltekit-api",
     "body": [
       "import { json } from '@sveltejs/kit';",
       "import type { RequestHandler } from './\\$types';",

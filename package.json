@@ -1,15 +1,18 @@
 {
   "name": "vscode-kyoz-snippets",
-  "displayName": "Kyoz Snippets Extension (Hono, Svelte, Astro)",
-  "description": "Plantillas personales para routers Hono, componentes Svelte y páginas Astro",
+  "displayName": "Kyoz Snippets & Productivity Tools (Hono, SvelteKit, Astro)",
+  "description": "Plantillas personales y comandos rápidos para SvelteKit, Hono y Astro",
   "version": "0.0.1",
   "publisher": "kyoz",
+  "main": "./out/extension.js",
   "icon": "images/logo.png",
   "engines": {
-    "vscode": "^1.80.0"
+    "vscode": "^1.107.0"
   },
+  "activationEvents": [],
   "categories": [
-    "Snippets"
+    "Snippets",
+    "Other"
   ],
   "repository": {
     "type": "git",
@@ -22,12 +25,36 @@
   "license": "MIT",
   "keywords": [
     "hono",
+    "sveltekit",
     "svelte",
     "astro",
     "snippets",
+    "productivity",
     "typescript"
   ],
+  "scripts": {
+    "vscode:prepublish": "pnpm build",
+    "compile": "pnpm build",
+    "watch": "pnpm esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --watch",
+    "build": "pnpm esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --minify",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
   "contributes": {
+    "languages": [
+      {
+        "id": "svelte",
+        "extensions": [
+          ".svelte"
+        ]
+      },
+      {
+        "id": "astro",
+        "extensions": [
+          ".astro"
+        ]
+      }
+    ],
     "snippets": [
       {
         "language": "typescript",
@@ -71,16 +98,136 @@
       },
       {
         "language": "svelte",
-        "path": "./snippets/svelte.json"
+        "path": "./snippets/sveltekit.json"
       },
       {
         "language": "typescript",
-        "path": "./snippets/svelte.json"
+        "path": "./snippets/sveltekit.json"
       },
       {
         "language": "astro",
         "path": "./snippets/astro.json"
       }
-    ]
+    ],
+    "commands": [
+      {
+        "command": "kyoz-snippets.newSvelteKitPage",
+        "title": "New SvelteKit Page (+page.svelte)",
+        "category": "Kyoz"
+      },
+      {
+        "command": "kyoz-snippets.newSvelteKitServerPage",
+        "title": "New SvelteKit Server Page (+page.server.ts)",
+        "category": "Kyoz"
+      },
+      {
+        "command": "kyoz-snippets.newSvelteKitAPI",
+        "title": "New SvelteKit API Endpoint (+server.ts)",
+        "category": "Kyoz"
+      },
+      {
+        "command": "kyoz-snippets.newSvelteKitLayout",
+        "title": "New SvelteKit Layout (+layout.svelte)",
+        "category": "Kyoz"
+      },
+      {
+        "command": "kyoz-snippets.newHonoRouter",
+        "title": "New Hono Router",
+        "category": "Kyoz"
+      },
+      {
+        "command": "kyoz-snippets.newHonoCRUD",
+        "title": "Hono: Router CRUD (Completo)",
+        "category": "Kyoz"
+      },
+      {
+        "command": "kyoz-snippets.newHonoMiddleware",
+        "title": "Hono: Middleware",
+        "category": "Kyoz"
+      },
+      {
+        "command": "kyoz-snippets.newAstroPage",
+        "title": "New Astro Page",
+        "category": "Kyoz"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "kyoz.main",
+        "label": "Kyoz Tools"
+      },
+      {
+        "id": "kyoz.sveltekit",
+        "label": "SvelteKit"
+      },
+      {
+        "id": "kyoz.hono",
+        "label": "Hono"
+      },
+      {
+        "id": "kyoz.astro",
+        "label": "Astro"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "submenu": "kyoz.main",
+          "group": "navigation"
+        }
+      ],
+      "kyoz.main": [
+        {
+          "submenu": "kyoz.sveltekit"
+        },
+        {
+          "submenu": "kyoz.hono"
+        },
+        {
+          "submenu": "kyoz.astro"
+        }
+      ],
+      "kyoz.sveltekit": [
+        {
+          "command": "kyoz-snippets.newSvelteKitPage"
+        },
+        {
+          "command": "kyoz-snippets.newSvelteKitServerPage"
+        },
+        {
+          "command": "kyoz-snippets.newSvelteKitAPI"
+        },
+        {
+          "command": "kyoz-snippets.newSvelteKitLayout"
+        }
+      ],
+      "kyoz.hono": [
+        {
+          "command": "kyoz-snippets.newHonoRouter"
+        },
+        {
+          "command": "kyoz-snippets.newHonoCRUD"
+        },
+        {
+          "command": "kyoz-snippets.newHonoMiddleware"
+        }
+      ],
+      "kyoz.astro": [
+        {
+          "command": "kyoz-snippets.newAstroPage"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.2",
+    "@types/vscode": "1.107.0",
+    "@vscode/vsce": "^3.9.1",
+    "esbuild": "^0.28.0",
+    "typescript": "^6.0.3"
+  },
+  "volta": {
+    "node": "24.15.0",
+    "pnpm": "11.1.1"
   }
 }

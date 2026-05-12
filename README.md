@@ -4,7 +4,7 @@
 # Kyoz Snippets Extension 🚀
 
   <p><b>Aumenta tu productividad con plantillas premium para el desarrollo moderno.</b></p>
-  <p>Optimizado para arquitecturas AduShared/AduFlow utilizando Hono, Svelte 5 y Astro.</p>
+  <p>Optimizado para arquitecturas utilizando Hono, Svelte 5 y Astro.</p>
 
 [![Version](https://img.shields.io/badge/version-0.0.3-blue.svg)](package.json)
 [![VS Code](https://img.shields.io/badge/platform-VS_Code-blueviolet.svg)](https://code.visualstudio.com/)
@@ -45,24 +45,48 @@
 
 ### 🚀 Svelte & SvelteKit
 
-| Prefijo                | Descripción                                                    |
-| :--------------------- | :------------------------------------------------------------- |
-| `svelte-page`          | Página estándar con Runes (`$props()`).                        |
-| `svelte-page-form`     | Formulario avanzado con Superforms y estados de carga.         |
-| `svelte-server-page`   | Lógica de servidor (`load` y `actions`) con tipado automático. |
-| `svelte-server-layout` | Lógica de servidor para layouts.                               |
-| `svelte-api`           | Endpoints de API para archivos `+server.ts`.                   |
+| Prefijo                   | Descripción                                                    |
+| :------------------------ | :------------------------------------------------------------- |
+| `sveltekit-page`          | Página estándar con Runes (`$props()`).                        |
+| `sveltekit-page-form`     | Formulario avanzado con Superforms y estados de carga.         |
+| `sveltekit-server-page`   | Lógica de servidor (`load` y `actions`) con tipado automático. |
+| `sveltekit-server-layout` | Lógica de servidor para layouts.                               |
+| `sveltekit-api`           | Endpoints de API para archivos `+server.ts`.                   |
 
 ---
 
 ## 🚀 Instalación
 
-1. Abre **VS Code**.
-2. Ve a la pestaña de **Extensiones** (`Ctrl+Shift+X`).
-3. Busca `Kyoz Snippets`.
-4. Haz clic en **Instalar**.
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/kyozApp/vscode-kyoz-snippets.git
+   ```
+2. Instala las dependencias con **pnpm**:
+   ```bash
+   pnpm install
+   ```
+3. Compila la extensión:
+   ```bash
+   pnpm build
+   ```
 
 ## 🛠️ Uso
+
+### 1. Snippets Manuales
+
+Escribe los siguientes prefijos en tus archivos:
+
+- **SvelteKit**: `sveltekit-page`, `sveltekit-server-page`, `sveltekit-api`, `sveltekit-layout`.
+- **Hono**: `hono-index`, `hono-router`, `hono-crud`, `hono-env`, `hono-middleware`.
+- **Astro**: `astro-page`.
+
+### 2. Menú Contextual (NUEVO)
+
+Haz clic derecho sobre cualquier carpeta en el explorador de archivos para ver las opciones de **Kyoz**:
+
+- **SvelteKit**: Crea automáticamente `+page.svelte`, `+page.server.ts`, etc.
+- **Hono**: Crea Routers y Middlewares rápidamente.
+- **Astro**: Crea páginas `.astro`.
 
 Simplemente abre un archivo soportado (`.ts`, `.js`, `.svelte`, `.astro`) y comienza a escribir los prefijos listados arriba. Presiona `Tab` o `Enter` para expandir el snippet.
 
